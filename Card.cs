@@ -1,33 +1,60 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class Card : Sprite
 {
-    public Texture HiraganaSheet;
-    public Texture KatakanaSheet;
+    static Random random = new Random();
+    public Texture CharSheet;
     public Sprite Char;
     public Label Label;
+
+    public Dictionary<int,string> characters = new Dictionary<int, string>
+    {
+        //hiragana
+        {0,"a"},{1,"ka"},{2,"sa"},{3,"ta"},{4,"na"},{5,"ha"},{6,"ma"},{7,"ya"},{8,"ra"},{9,"wa"},
+        {10,"i"},{11,"ki"},{12,"shi"},{13,"chi"},{14,"ni"},{15,"hi"},{16,"mi"},{17,"n"},{18,"ri"},{19,"ro"},
+        {20,"u"},{21,"ku"},{22,"su"},{23,"tsu"},{24,"nu"},{25,"fu"},{26,"mu"},{27,"yu"},{28,"ru"},{29,"wo"},
+        {30,"e"},{31,"ke"},{32,"se"},{33,"te"},{34,"ne"},{35,"he"},{36,"me"},{37,"yo"},{38,"re"},{39,"mo"},
+        {40,"o"},{41,"ko"},{42,"so"},{43,"to"},{44,"no"},{45,"ho"},
+
+        //katakana
+        {50,"a"},{51,"ka"},{52,"sa"},{53,"ta"},{54,"na"},{55,"ha"},{56,"ma"},{57,"ya"},{58,"ra"},{59,"wa"},
+        {60,"n"},{61,"i"},{62,"ki"},{63,"shi"},{64,"chi"},{65,"ni"},{66,"hi"},{67,"mi"},{68,"ri"},{69,"u"},
+        {70,"ku"},{71,"su"},{72,"tsu"},{73,"nu"},{74,"fu"},{75,"mu"},{76,"yu"},{77,"ru"},{78,"e"},{79,"ke"},
+        {80,"se"},{81,"te"},{82,"ne"},{83,"he"},{84,"me"},{85,"re"},{86,"o"},{87,"ko"},{88,"so"},{89,"to"},
+        {90,"no"},{91,"ho"},{92,"mo"},{93,"yo"},{94,"ro"},{95,"wo"},
+    };
+
+    
+    
     public override void _Ready()
     {
         base._Ready();
-        int randomNumber = RandomChar();
-        GD.Print(randomNumber);
         Char = GetNode<Sprite>("Char");
         Label = GetNode<Label>("Label");
-        HiraganaSheet = ResourceLoader.Load<Texture>("res://hiragana_sheet.png");
-        Char.Texture = HiraganaSheet;
-        Char.Frame = randomNumber;
+        CharSheet = ResourceLoader.Load<Texture>("res://hiragana_to_katakana_.png");
     }
 
-    public int RandomChar()
+    public void SetTexture(int characterNumber)
     {
-        Random rand = new Random();
-        int newNumber;
-        do 
-        {
-            newNumber = rand.Next(0,50);
-        } 
-        while (newNumber == 18 || newNumber == 20 || newNumber == 38 || newNumber == 40);
-        return newNumber;
+        Char.Texture = CharSheet;
+        Char.Frame = characterNumber;
+    }
+
+    public void SetLabel(int characterNumber)
+    {
+        Label.Text = characters[characterNumber];
+    }
+
+    public void SetCard(int cardNumber)
+    {
+        SetTexture(cardNumber);
+        SetLabel(cardNumber);
+    }
+
+    public void ShowCard()
+    {
+        Label.Visible = true;
     }
 }
