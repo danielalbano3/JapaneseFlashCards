@@ -5,7 +5,6 @@
 [ext_resource path="res://Card.cs" type="Script" id=3]
 
 [node name="Card" type="Sprite"]
-position = Vector2( 520, 304 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -30,3 +29,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
+
+[node name="Tween" type="Tween" parent="."]
