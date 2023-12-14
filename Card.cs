@@ -14,20 +14,18 @@ public class Card : Sprite
 
     public Dictionary<int,string> characters = new Dictionary<int, string>
     {
-        //hiragana 46
-        {0,"a"},{1,"ka"},{2,"sa"},{3,"ta"},{4,"na"},{5,"ha"},{6,"ma"},{7,"ya"},{8,"ra"},{9,"wa"},
-        {10,"i"},{11,"ki"},{12,"shi"},{13,"chi"},{14,"ni"},{15,"hi"},{16,"mi"},{17,"n"},{18,"ri"},{19,"ro"},
-        {20,"u"},{21,"ku"},{22,"su"},{23,"tsu"},{24,"nu"},{25,"fu"},{26,"mu"},{27,"yu"},{28,"ru"},{29,"wo"},
-        {30,"e"},{31,"ke"},{32,"se"},{33,"te"},{34,"ne"},{35,"he"},{36,"me"},{37,"yo"},{38,"re"},{39,"mo"},
-        {40,"o"},{41,"ko"},{42,"so"},{43,"to"},{44,"no"},{45,"ho"},
-
-        //katakana 46
-        {50,"a"},{51,"ka"},{52,"sa"},{53,"ta"},{54,"na"},{55,"ha"},{56,"ma"},{57,"ya"},{58,"ra"},{59,"wa"},
-        {60,"n"},{61,"i"},{62,"ki"},{63,"shi"},{64,"chi"},{65,"ni"},{66,"hi"},{67,"mi"},{68,"ri"},{69,"u"},
-        {70,"ku"},{71,"su"},{72,"tsu"},{73,"nu"},{74,"fu"},{75,"mu"},{76,"yu"},{77,"ru"},{78,"e"},{79,"ke"},
-        {80,"se"},{81,"te"},{82,"ne"},{83,"he"},{84,"me"},{85,"re"},{86,"o"},{87,"ko"},{88,"so"},{89,"to"},
-        {90,"no"},{91,"ho"},{92,"mo"},{93,"yo"},{94,"ro"},{95,"wo"},
-        //count: 92
+        //hiragana + katakana
+        {0,"a"},{1,"i"},{2,"su"},{3,"te"},{4,"ho"},
+        {5,"ka"},{6,"ki"},{7,"tsu"},{8,"ne"},{9,"mo"},
+        {10,"sa"},{11,"shi"},{12,"nu"},{13,"he"},{14,"yo"},
+        {15,"ta"},{16,"chi"},{17,"fu"},{18,"me"},{19,"ro"},
+        {20,"na"},{21,"ni"},{22,"mu"},{23,"re"},{24,"wo"},
+        {25,"ha"},{26,"hi"},{27,"yu"},{28,"o"},{29,"n"},
+        {30,"ma"},{31,"mi"},{32,"ru"},{33,"ko"},{34,"ku"},
+        {35,"ya"},{36,"ri"},{37,"e"},{38,"so"},{39,"se"},
+        {40,"ra"},{41,"u"},{42,"ke"},{43,"to"},{44,"no"},
+        {45,"wa"}
+        //count: 46
     };
 
     public override void _Ready()
@@ -36,7 +34,7 @@ public class Card : Sprite
         twn = GetNode<Tween>("Tween");
         Char = GetNode<Sprite>("Char");
         Label = GetNode<Label>("Label");
-        CharSheet = ResourceLoader.Load<Texture>("res://hiragana_to_katakana_.png");
+        CharSheet = ResourceLoader.Load<Texture>("res://hiragana_katakana_duo.png");
         
         Connect("RemoveCardSignal", GetParent().GetParent(), "RemoveCard");
     }

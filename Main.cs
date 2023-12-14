@@ -7,8 +7,8 @@ public class Main : Node2D
 {
     public PackedScene CardScene;
     private Position2D Top;
-    private Position2D Mid;
-    private Position2D Bottom;
+    // private Position2D Mid;
+    // private Position2D Bottom;
     private Sprite Deck;
     private Tween Tween;
     private PathFollow2D Follow;
@@ -24,8 +24,8 @@ public class Main : Node2D
         Tween = GetNode<Tween>("Tween");
         Follow = GetNode<PathFollow2D>("Path/Follow");
         Top = GetNode<Position2D>("TopPosition");
-        Mid = GetNode<Position2D>("MidPosition");
-        Bottom = GetNode<Position2D>("BottomPosition");
+        // Mid = GetNode<Position2D>("MidPosition");
+        // Bottom = GetNode<Position2D>("BottomPosition");
 
         SetDeck();
     }

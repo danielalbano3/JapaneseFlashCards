@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://blankcard.png" type="Texture" id=1]
-[ext_resource path="res://hiragana_to_katakana_.png" type="Texture" id=2]
+[ext_resource path="res://hiragana_katakana_duo.png" type="Texture" id=2]
 [ext_resource path="res://Card.cs" type="Script" id=3]
 
 [node name="Card" type="Sprite"]
@@ -15,7 +15,7 @@ __meta__ = {
 position = Vector2( 0, -48 )
 scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 2 )
-hframes = 10
+hframes = 5
 vframes = 10
 
 [node name="Label" type="Label" parent="."]
