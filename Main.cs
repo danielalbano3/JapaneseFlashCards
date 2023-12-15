@@ -6,29 +6,58 @@ using System.Threading;
 public class Main : Node2D
 {
     public PackedScene CardScene;
+    private PackedScene MainMenuScene;
     private Position2D Top;
     private Sprite Deck;
     private Tween Tween;
     private PathFollow2D Follow;
     private int[] ShuffledDeck;
-    private Card temp;
+    private Card currentCard;
+
+    private Button BackBtn;
+    private Button ReshuffleBtn;
+    private Button ExitBtn;
   
     public override void _Ready()
     {
         base._Ready();
         ShuffledDeck = ShuffleDeck.GetShuffle(46);
         CardScene = ResourceLoader.Load<PackedScene>("res://Card.tscn");
+        MainMenuScene = ResourceLoader.Load<PackedScene>("res://Menu.tscn");
         Deck = GetNode<Sprite>("Deck");
         Tween = GetNode<Tween>("Tween");
         Follow = GetNode<PathFollow2D>("Path/Follow");
         Top = GetNode<Position2D>("TopPosition");
 
+        BackBtn = GetNode<Button>("Buttons/Back");
+        ReshuffleBtn = GetNode<Button>("Buttons/Reshuffle");
+        ExitBtn = GetNode<Button>("Buttons/Exit");
+
+        BackBtn.Connect("pressed", this, "ReturnToMainMenu");
+        ReshuffleBtn.Connect("pressed", this, "ReshuffleDeck");
+        ExitBtn.Connect("pressed", this, "ExitApp");
+
         SetDeck();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        GetTree().ChangeSceneTo(MainMenuScene);
+    }
+
+    public void ReshuffleDeck()
+    {
+        GetTree().ReloadCurrentScene();
+    }
+
+    public void ExitApp()
+    {
+        GetTree().Quit();
     }
 
     public async void RemoveCard(Card _card)
     {
-        temp = _card;
+        currentCard = _card;
         Tween.InterpolateProperty(Follow, "unit_offset", 0.0, 0.48, 0.25f);
         Tween.Start();
         await ToSignal(Tween, "tween_all_completed");
@@ -46,7 +75,7 @@ public class Main : Node2D
         base._PhysicsProcess(delta);
         if (Tween.IsActive())
         {
-            temp.GlobalPosition = Follow.GlobalPosition;
+            currentCard.GlobalPosition = Follow.GlobalPosition;
         }
     }
 
