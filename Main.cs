@@ -7,8 +7,6 @@ public class Main : Node2D
 {
     public PackedScene CardScene;
     private Position2D Top;
-    // private Position2D Mid;
-    // private Position2D Bottom;
     private Sprite Deck;
     private Tween Tween;
     private PathFollow2D Follow;
@@ -18,14 +16,12 @@ public class Main : Node2D
     public override void _Ready()
     {
         base._Ready();
-        ShuffledDeck = ShuffleDeck.GetShuffle();
+        ShuffledDeck = ShuffleDeck.GetShuffle(46);
         CardScene = ResourceLoader.Load<PackedScene>("res://Card.tscn");
         Deck = GetNode<Sprite>("Deck");
         Tween = GetNode<Tween>("Tween");
         Follow = GetNode<PathFollow2D>("Path/Follow");
         Top = GetNode<Position2D>("TopPosition");
-        // Mid = GetNode<Position2D>("MidPosition");
-        // Bottom = GetNode<Position2D>("BottomPosition");
 
         SetDeck();
     }
@@ -33,12 +29,12 @@ public class Main : Node2D
     public async void RemoveCard(Card _card)
     {
         temp = _card;
-        Tween.InterpolateProperty(Follow, "unit_offset", 0.0, 0.48, 0.5f);
+        Tween.InterpolateProperty(Follow, "unit_offset", 0.0, 0.48, 0.25f);
         Tween.Start();
         await ToSignal(Tween, "tween_all_completed");
         Deck.MoveChild(_card,0);
         _card.ZIndex = -1;
-        Tween.InterpolateProperty(Follow, "unit_offset", 0.48, 1.0, 0.5f);
+        Tween.InterpolateProperty(Follow, "unit_offset", 0.48, 1.0, 0.25f);
         Tween.Start();
         await ToSignal(Tween, "tween_all_completed");
         _card.HideLabel();
@@ -73,6 +69,21 @@ public class Main : Node2D
         for (int i = 0; i < ShuffledDeck.Length; i++)
         {
             SpawnCard(i);
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (Tween.IsActive())
+        {
+            return;
+        } 
+        else
+        {
+            base._Input(@event);
+            int cardCount = Deck.GetChildCount();
+            var cardClicked = Deck.GetChild<Card>(cardCount - 1);
+            cardClicked.CardInput(@event);
         }
     }
 }

@@ -4,24 +4,24 @@ using System.Collections.Generic;
 
 public class ShuffleDeck
 {
-  private static int[] CardIndexArray = new int[46];
+  private static int[] CardIndexArray;
   
-  public static int[] GetShuffle()
+  public static int[] GetShuffle(int size)
   {
-    int n = 46; //number of cards
-    for (int i = 0; i < n; i++)
+    CardIndexArray = new int[size];
+    for (int i = 0; i < size; i++)
     {
       CardIndexArray[i] = i;
     } 
 
     Random random = new Random();
-    while (n > 1)
+    while (size > 1)
     {
-      n--;
-      int k = random.Next(n + 1);
+      size--;
+      int k = random.Next(size + 1);
       int value = CardIndexArray[k];
-      CardIndexArray[k] = CardIndexArray[n];
-      CardIndexArray[n] = value;
+      CardIndexArray[k] = CardIndexArray[size];
+      CardIndexArray[size] = value;
     }
 
     return CardIndexArray;

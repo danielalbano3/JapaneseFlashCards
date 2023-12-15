@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Card : Sprite
 {
-    static Random random = new Random();
+    // static Random random = new Random();
     public Texture CharSheet;
     public Sprite Char;
     public Label Label;
@@ -12,7 +12,7 @@ public class Card : Sprite
 
     [Signal] delegate void RemoveCardSignal(Card _card);
 
-    public Dictionary<int,string> characters = new Dictionary<int, string>
+    Dictionary<int,string> characters = new Dictionary<int, string>
     {
         //hiragana + katakana
         {0,"a"},{1,"i"},{2,"su"},{3,"te"},{4,"ho"},
@@ -27,6 +27,7 @@ public class Card : Sprite
         {45,"wa"}
         //count: 46
     };
+
 
     public override void _Ready()
     {
@@ -83,9 +84,8 @@ public class Card : Sprite
         Label.Visible = false;
     }
 
-    public override void _Input(InputEvent @event)
+    public void CardInput(InputEvent @event)
     {
-        base._Input(@event);
         if (@event is InputEventMouseButton && 
             ((InputEventMouseButton)@event).ButtonIndex == (int)ButtonList.Left && 
             ((InputEventMouseButton)@event).Pressed)

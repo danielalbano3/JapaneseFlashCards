@@ -17,14 +17,6 @@ script = ExtResource( 3 )
 position = Vector2( 572, 241 )
 scale = Vector2( 2, 2 )
 
-[node name="MidPosition" type="Position2D" parent="."]
-position = Vector2( 500, 673 )
-scale = Vector2( 2, 2 )
-
-[node name="BottomPosition" type="Position2D" parent="."]
-position = Vector2( 500, 265 )
-scale = Vector2( 2, 2 )
-
 [node name="Deck" type="Sprite" parent="."]
 position = Vector2( 500, 265 )
 texture = ExtResource( 1 )
