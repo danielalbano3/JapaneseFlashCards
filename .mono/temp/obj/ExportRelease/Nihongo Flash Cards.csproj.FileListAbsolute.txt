@@ -1,0 +1,9 @@
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\bin\ExportRelease\Nihongo Flash Cards.dll
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\bin\ExportRelease\Nihongo Flash Cards.pdb
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.csproj.AssemblyReference.cache
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.GeneratedMSBuildEditorConfig.editorconfig
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.AssemblyInfoInputs.cache
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.AssemblyInfo.cs
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.csproj.CoreCompileInputs.cache
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.dll
+C:\Godot3CS\Projects\NihongoFlashCards\.mono\temp\obj\ExportRelease\Nihongo Flash Cards.pdb
