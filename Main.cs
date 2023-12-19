@@ -5,7 +5,7 @@ using System.Threading;
 
 public class Main : Node2D
 {
-    public PackedScene CardScene;
+    private PackedScene CardScene;
     private PackedScene MainMenuScene;
     private Position2D Top;
     private Sprite Deck;
@@ -13,19 +13,27 @@ public class Main : Node2D
     private PathFollow2D Follow;
     private int[] ShuffledDeck;
     private Card currentCard;
+    private TextureRect Background;
 
     private Button BackBtn;
     private Button ReshuffleBtn;
     private Button ExitBtn;
+
+    
   
     public override void _Ready()
     {
         base._Ready();
         ShuffledDeck = ShuffleDeck.GetShuffle(46);
         CardScene = ResourceLoader.Load<PackedScene>("res://Card.tscn");
+        Tween = GetNode<Tween>("Tween");
+        SetScene();
+    }
+
+    private void SetScene()
+    {
         MainMenuScene = ResourceLoader.Load<PackedScene>("res://Menu.tscn");
         Deck = GetNode<Sprite>("Deck");
-        Tween = GetNode<Tween>("Tween");
         Follow = GetNode<PathFollow2D>("Path/Follow");
         Top = GetNode<Position2D>("TopPosition");
 
@@ -40,22 +48,22 @@ public class Main : Node2D
         SetDeck();
     }
 
-    public void ReturnToMainMenu()
+    private void ReturnToMainMenu()
     {
         GetTree().ChangeSceneTo(MainMenuScene);
     }
 
-    public void ReshuffleDeck()
+    private void ReshuffleDeck()
     {
         GetTree().ReloadCurrentScene();
     }
 
-    public void ExitApp()
+    private void ExitApp()
     {
         GetTree().Quit();
     }
 
-    public async void RemoveCard(Card _card)
+    private async void RemoveCard(Card _card)
     {
         currentCard = _card;
         Tween.InterpolateProperty(Follow, "unit_offset", 0.0, 0.48, 0.25f);
@@ -85,7 +93,7 @@ public class Main : Node2D
  
     }
 
-    public void SpawnCard(int cardindex)
+    private void SpawnCard(int cardindex)
     {
         Card _card = (Card)CardScene.Instance();
         Deck.AddChild(_card);
@@ -93,7 +101,7 @@ public class Main : Node2D
         _card.GlobalPosition = Top.GlobalPosition;
     }
 
-    public void SetDeck()
+    private void SetDeck()
     {
         for (int i = 0; i < ShuffledDeck.Length; i++)
         {

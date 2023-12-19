@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Yoitrax - Ronin.mp3-cf55e50e8aa50079cdbd81e03fd75703.mp3str"
+
+[deps]
+
+source_file="res://Yoitrax - Ronin.mp3"
+dest_files=[ "res://.import/Yoitrax - Ronin.mp3-cf55e50e8aa50079cdbd81e03fd75703.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

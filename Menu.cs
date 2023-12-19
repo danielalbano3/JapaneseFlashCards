@@ -8,11 +8,13 @@ public class Menu : Control
     private Button ExitBtn;
 
     private PackedScene HiraganaKatakanaScene;
+    private PackedScene KanjiScene;
 
     public override void _Ready()
     {
         base._Ready();
         HiraganaKatakanaScene = ResourceLoader.Load<PackedScene>("res://Main.tscn");
+        KanjiScene = ResourceLoader.Load<PackedScene>("res://KanjiMain.tscn");
         HiraganaKatakanaBtn = GetNode<Button>("MarginContainer/VBoxContainer/Buttons/HKButton");
         KanjiBtn = GetNode<Button>("MarginContainer/VBoxContainer/Buttons/KanjiButton");
         ExitBtn = GetNode<Button>("MarginContainer/VBoxContainer/Buttons/ExitButton");
@@ -22,14 +24,14 @@ public class Menu : Control
         ExitBtn.Connect("pressed", this, "GoToExit");
     }
 
-    public void GoToHiraganaKatakana()
+    private void GoToHiraganaKatakana()
     {
         GetTree().ChangeSceneTo(HiraganaKatakanaScene);
     }
 
-    public void GoToKanji()
+    private void GoToKanji()
     {
-        GD.Print("Konbanwa desu");
+        GetTree().ChangeSceneTo(KanjiScene);
     }
 
     public void GoToExit()
