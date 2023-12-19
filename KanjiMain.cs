@@ -55,6 +55,7 @@ public class KanjiMain : Node2D
         tempCard = _card;
         Tween.InterpolateProperty(Follow, "unit_offset", 0.0, 0.55, 0.25f);
         Tween.Start();
+        SFX.Play();
         await ToSignal(Tween, "tween_all_completed");
         Deck.MoveChild(_card, 0);
         Tween.InterpolateProperty(Follow, "unit_offset", 0.55, 1.0, 0.25f);

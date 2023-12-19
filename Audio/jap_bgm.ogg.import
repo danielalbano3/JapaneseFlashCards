@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jap_bgm.ogg-370d2ce1177af7b620083ed8253e8789.oggstr"
+
+[deps]
+
+source_file="res://Audio/jap_bgm.ogg"
+dest_files=[ "res://.import/jap_bgm.ogg-370d2ce1177af7b620083ed8253e8789.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -80,6 +80,11 @@ public class Card : Sprite
         Label.Visible = false;
     }
 
+    public void MoveCardPos(float x, float y)
+    {
+        Position = new Vector2(x, y);
+    }
+
     public void CardInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton && 

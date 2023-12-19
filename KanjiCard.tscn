@@ -7,6 +7,7 @@
 [ext_resource path="res://Theme_menu.tres" type="Theme" id=5]
 
 [sub_resource type="DynamicFont" id=1]
+size = 20
 font_data = ExtResource( 4 )
 
 [node name="KanjiCard" type="Sprite"]
@@ -31,11 +32,11 @@ anchor_top = 0.68
 anchor_right = 0.884
 anchor_bottom = 0.957143
 margin_left = -125.0
-margin_top = -175.0
+margin_top = -200.0
 margin_right = -125.0
-margin_bottom = -175.0
+margin_bottom = -200.0
 theme = ExtResource( 5 )
-custom_constants/separation = 20
+custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -66,9 +67,9 @@ text = "kunyomi"
 [node name="MeaningLabel" type="Label" parent="Labels"]
 visible = false
 modulate = Color( 0, 0, 0, 1 )
-margin_top = 20.0
+margin_top = 30.0
 margin_right = 192.0
-margin_bottom = 40.0
+margin_bottom = 55.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Placeholder text"

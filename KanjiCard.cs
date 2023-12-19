@@ -205,7 +205,7 @@ public class KanjiCard : Sprite
         },
         new Dictionary<string,string>
         {
-            {"Onyomi" , "hatsu, hotsu"},
+            {"Onyomi" , "hatsu"},
             {"Kunyomi", ""},
             {"Meaning", "departure"}
         },
